@@ -1,0 +1,50 @@
+#install node version manager
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+#logout and login
+exit
+
+#use nvm to install node js
+nvm install 12.16.3
+
+#test nodejs is installed and correctly running
+node -e "console.log('Running Node.js ' + process.version)"
+
+#install dax nodejs client using npm(node package manager)
+npm install amazon-dax-client
+
+#download sample source code
+wget http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/samples/TryDax.zip
+
+#extract
+unzip TryDax.zip
+
+#change directory
+cd TryDax/nodejs
+
+#edit the region in create table nodejs program
+nano 01-create-table.js
+var region = "ap-south-1"; #change region in this line
+
+ctrl+o & ctrl+x (save and close)
+
+#run program to create table 
+node 01-create-table.js
+
+#edit the region in write table nodejs program
+nano 02-write-data.js
+var region = "ap-south-1"; #change region in this line
+
+ctrl+s & ctrl+x (save and close)
+
+#run program to write data
+node 02-write-data.js
+
+#edit the region in get item nodejs program
+nano 03-getitem-test.js
+var region = "ap-south-1"; #change region in this line
+
+ctrl+s & ctrl+x (save and close)
+
+#run program to check the average time
+node 03-getitem-test.js
